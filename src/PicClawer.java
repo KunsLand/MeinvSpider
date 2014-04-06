@@ -63,7 +63,7 @@ public class PicClawer {
 						imgrp = getImageGroup("http://www.95mm.com/slide-data/data/"
 								+ picgroupid);
 						imgrp.setType(category_name);
-						// handler.add(imgrp);
+						 handler.add(imgrp);
 						// System.out.println(imgrp);
 					} catch (JSONException e) {
 						// e.printStackTrace();
