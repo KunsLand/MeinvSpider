@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -5,7 +6,7 @@ public class ImageGroup {
 
 	private String name;
 	private String type;
-	private List<String> urlList;
+	private List<String> urlList = new ArrayList<String>();
 	
 //	public ImageGroup(String name , List<String> urlList){
 //		this .name = name;
@@ -38,6 +39,10 @@ public class ImageGroup {
 
 	public void setUrlList(List<String> urlList) {
 		this.urlList = urlList;
+	}
+	
+	public void addUrlList(List<String> urlList) {
+		this.urlList.addAll(urlList);
 	}
 	
 }

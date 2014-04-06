@@ -47,26 +47,35 @@ public class PicClawer {
 			for (Element pic_group : piclists) {
 				String url = pic_group.select("a").attr("href");
 				// Document doc3 = getHtmlByUrl(url);
-				String picgroupid = url.substring(url.lastIndexOf('/') + 1);
+				String picgroupid = url.substring(url.lastIndexOf('/') + 1,
+						url.length() - 5);
+				System.out.println(picgroupid);
 				String letters = picgroupid.replaceAll("([0-9])", "");
 				for (int j = 0; j < letters.length(); j++)
 					picgroupid = picgroupid.replace(
 							letters.subSequence(j, j + 1),
 							(int) letters.charAt(j) + "");
-				picgroupid = picgroupid.substring(4, 8);
+				System.out.println(picgroupid);
+				picgroupid = picgroupid.substring(4, picgroupid.length() - 4);
 				ImageGroup imgrp = null;
-				// for (int k = 0; imgrp == null && k < 5; k++) {
-				try {
-					imgrp = getImageGroup("http://www.95mm.com/slide-data/data/"
-							+ picgroupid);
-					imgrp.setType(category_name);
-					handler.add(imgrp);
-					// System.out.println(imgrp);
-				} catch (JSONException e) {
-					e.printStackTrace();
-					logger.info(e.getMessage());
+				for (int k = 0; imgrp == null && k < 5; k++) {
+					try {
+						imgrp = getImageGroup("http://www.95mm.com/slide-data/data/"
+								+ picgroupid);
+						imgrp.setType(category_name);
+						// handler.add(imgrp);
+						// System.out.println(imgrp);
+					} catch (JSONException e) {
+						// e.printStackTrace();
+						// logger.info("");
+						logger.info(e.getMessage());
+						try {
+							System.in.read();
+						} catch (IOException e1) {
+							e1.printStackTrace();
+						}
+					}
 				}
-				// }
 			}
 		}
 	}
