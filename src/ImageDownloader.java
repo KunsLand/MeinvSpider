@@ -81,7 +81,7 @@ public class ImageDownloader {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		String filePath = "D:\\meinvPicture";
-		String url = "http://p.aimm-img.com/uploads/allimg/140320/2-140320152154.jpg";
+		String url = "http://pic.tupian12345.com/picss/2014/allimg/140405/19494/1-140405141220-51.jpg";
 		String ImageDir = filePath+"\\"+1+url.substring(url.lastIndexOf("."));
 		//String ImageDir = filePath+"\\"+url.substring(url.lastIndexOf("/"));
 	    ImageDownloader test = new ImageDownloader(ImageDir,url);

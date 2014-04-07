@@ -26,8 +26,10 @@ public class Tupian123ClawerThread extends Thread {
 		Document siteMapHtml = getHtmlByUrl(baseUrl + "/data/sitemap.html");
 
 		Elements taotu = siteMapHtml.select("ul.f6").first().select("li a");
-		for (Element e : taotu)
-			new Tupian123ClawerThread(e.attr("href")).start();
+		new Tupian123Clawer().execute(taotu.first().attr("href"));
+//		new Tupian123ClawerThread(taotu.first().attr("href")).start();
+//		for (Element e : taotu)
+//			new Tupian123ClawerThread(e.attr("href")).start();
 
 		// Elements shipin = siteMapHtml.select("ul.f6").get(1).select("li a");
 		// for (Element e : shipin)

@@ -15,6 +15,8 @@ public class Tupian123Clawer {
 
 	private DataHandler handler = new DataHandler();
 
+	private String dir = "E:\\meinvPicture\\";
+
 	public Document getHtmlByUrl(String url) {
 		logger.info("\nRetrieving: " + url);
 		Document doc = null;
@@ -62,12 +64,15 @@ public class Tupian123Clawer {
 			ig.setType(type);
 			System.out.println("type:\t " + type + "\nurl:\t " + url
 					+ "\ntitle:\t " + title);
-			int i = 1;
+			int i = 0;
 			for (Element pic : pics) {
 				String picurl = pic.attr("src");
 				ig.addUrl(picurl);
-				System.out.println(i++ + ":\t " + picurl);
+				System.out.println(++i + ":\t " + picurl);
+				new Downloader(dir + type + "\\" + title + "\\", i + ".jpg",
+						picurl).startDownload();
 			}
+//			pause();
 
 			// more than one page
 			int pages = Integer.parseInt(html.select("div.dede_pages ul li")
@@ -84,12 +89,23 @@ public class Tupian123Clawer {
 				for (Element pic : pics) {
 					String picurl = pic.attr("src");
 					ig.addUrl(picurl);
-					System.out.println(i++ + ":\t " + picurl);
+					System.out.println(++i + ":\t " + picurl);
+					new Downloader(dir + type + "\\" + title + "\\",
+							i + ".jpg", picurl).startDownload();
 				}
+//				pause();
 			}
 
 			// send this image group to download handler
-			handler.add(ig);
+			// handler.add(ig);
+		}
+	}
+
+	private void pause() {
+		try {
+			Thread.sleep(1000 * 25);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
 		}
 	}
 
