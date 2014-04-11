@@ -16,9 +16,11 @@ public class PicClawer {
 	// private static SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-HH");
 	static Logger logger = Logger.getLogger(PicClawer.class.getName());
 	private DataHandler handler;
+	private DownloadGroup dg;
 
 	public PicClawer() {
 		handler = new DataHandler();
+		dg = new DownloadGroup();
 	}
 
 	public void task(String category_url) {
@@ -63,7 +65,8 @@ public class PicClawer {
 						imgrp = getImageGroup("http://www.95mm.com/slide-data/data/"
 								+ picgroupid);
 						imgrp.setType(category_name);
-						 handler.add(imgrp);
+						// handler.add(imgrp);
+						dg.downloadImageGroup(imgrp);
 						// System.out.println(imgrp);
 					} catch (JSONException e) {
 						// e.printStackTrace();

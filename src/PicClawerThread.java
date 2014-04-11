@@ -16,9 +16,9 @@ public class PicClawerThread extends Thread {
 		PicClawer pc = new PicClawer();
 		String[] categories = { "qingchun", "xinggan", "mingxing", "mote",
 				"wangluo", "siwa" };
-		new PicClawerThread(categories[3], pc).start();
-//		for(int i=0; i<categories.length;i++)
-//			new PicClawerThread(categories[i], pc).start();
+//		new PicClawerThread(categories[3], pc).start();
+		for(int i=0; i<categories.length;i++)
+			new PicClawerThread(categories[i], pc).start();
 	}
 	
 }
