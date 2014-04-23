@@ -1,10 +1,10 @@
 package diao.si.common;
-import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ThreadPool {
 
-	private static Executor executor;
+	private static ExecutorService executor;
 
 	static {
 		executor = Executors.newFixedThreadPool(40);

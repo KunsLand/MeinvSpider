@@ -19,15 +19,15 @@ public class Tupian123ClawerManager extends Thread {
 //		new Tupian123Clawer().execute("/HTM/pic/plans/");
 //		new Tupian123Clawer().execute("/HTM/pic/Ligui/");
 //		new Tupian123Clawer().execute("/HTM/pic/rqstar/");
-		new Tupian123Clawer().execute("/HTM/pic/ROSI/");
-		new Tupian123Clawer().execute("/HTM/pic/4k/");
-		new Tupian123Clawer().execute("/HTM/pic/dgxz/");
-		new Tupian123Clawer().execute("/HTM/pic/Beautyleg/");
-		new Tupian123Clawer().execute("/HTM/pic/DGC/");
-		new Tupian123Clawer().execute("/HTM/pic/taboo/");
-		new Tupian123Clawer().execute("/HTM/pic/TopQueen/");
-		new Tupian123Clawer().execute("/HTM/pic/xiuren/");
-		new Tupian123Clawer().execute("/HTM/pic/Bombtv/");
+//		new Tupian123Clawer().execute("/HTM/pic/ROSI/");
+//		new Tupian123Clawer().execute("/HTM/pic/4k/");
+//		new Tupian123Clawer().execute("/HTM/pic/dgxz/");
+//		new Tupian123Clawer().execute("/HTM/pic/Beautyleg/");
+//		new Tupian123Clawer().execute("/HTM/pic/DGC/");
+//		new Tupian123Clawer().execute("/HTM/pic/taboo/");
+//		new Tupian123Clawer().execute("/HTM/pic/TopQueen/");
+//		new Tupian123Clawer().execute("/HTM/pic/xiuren/");
+//		new Tupian123Clawer().execute("/HTM/pic/Bombtv/");
 		new Tupian123Clawer().execute("/HTM/pic/Sabranet/");
 //		Document siteMapHtml = getHtmlByUrl(baseUrl + "/data/sitemap.html");
 //

@@ -1,4 +1,5 @@
 package com.tupian12345;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,19 +20,22 @@ public class Tupian123Clawer {
 		String type = typeurl.substring(9, typeurl.lastIndexOf("/"));
 		// first page
 		String url = baseUrl + typeurl;
+		System.out.println(url);
 		Document doc = WebClient.getHtmlByUrl(url);
-		Elements picGroup = doc.select("div.page1 ul li a");
+		Elements picGroup = doc.select("div.page1 > ul > li > a");
 		clawPicGroups(picGroup, type);
 
+		if (doc.select("div.sxye > ul > li > a").isEmpty())
+			return;
 		// other pages
-		while (!doc.select("div.sxye ul li a").isEmpty()
-				&& !doc.select("div.sxye ul li").last().select("a").isEmpty()) {
+		while (!doc.select("div.sxye > ul > li").last().select("a").isEmpty()) {
 			url = baseUrl
 					+ typeurl
-					+ doc.select("div.sxye ul li").last()
+					+ doc.select("div.sxye > ul > li").last()
 							.previousElementSibling().select("a").attr("href");
+			System.out.println(url);
 			doc = WebClient.getHtmlByUrl(url);
-			picGroup = doc.select("div.page1 ul li a");
+			picGroup = doc.select("div.page1 > ul > li > a");
 			clawPicGroups(picGroup, type);
 		}
 	}
@@ -39,11 +43,11 @@ public class Tupian123Clawer {
 	private void clawPicGroups(Elements picGroup, String type) {
 		for (Element e : picGroup) {
 			String url = baseUrl + e.attr("href");
+			String title = e.attr("title");
+			System.out.println(url + ": " + title);
 			Document html = WebClient.getHtmlByUrl(url);
 
 			ImageGroup4Downloader ig = new ImageGroup4Downloader();
-			String title = html.select("div.bcen div div.title h1").first()
-					.ownText();
 			ig.getImageGroup().setName(title);
 			ig.getImageGroup().setCategory(type);
 
@@ -61,6 +65,7 @@ public class Tupian123Clawer {
 					url = prefix
 							+ html.select("div.dede_pages ul li a").last()
 									.attr("href");
+					System.out.println(url);
 					html = WebClient.getHtmlByUrl(url);
 					pics = html.select("div.page-list > div > p > img");
 					ig.addImageUrls(getPicUrls(pics));
@@ -69,8 +74,7 @@ public class Tupian123Clawer {
 			}
 
 			// send this image group to download handler
-			// handler.add(ig);
-			ThreadPool.execute(new DownloadGroup(ig));
+			 ThreadPool.execute(new DownloadGroup(ig));
 		}
 	}
 

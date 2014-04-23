@@ -8,7 +8,9 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import diao.si.common.ImageGroup4Downloader;
+import diao.si.common.ThreadPool;
 import diao.si.common.WebClient;
+import diao.si.downloader.DownloadGroup;
 
 public class Pic4493Clawer extends Thread {
 
@@ -79,7 +81,7 @@ public class Pic4493Clawer extends Thread {
 		dg4d.addImageUrls(urlList);
 		
 		// downloader
-		
+//		ThreadPool.execute(new DownloadGroup(dg4d));
 	}
 	
 	public static void main(String[] args) {
